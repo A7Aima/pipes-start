@@ -8,13 +8,14 @@
       <h2> App Status {{appStatus|async}}</h2>
       <hr>
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let server of servers | filter:filteredStatus:'status'"
+        <li class="list-group-item" *ngFor="let server of servers | filter:filteredStatus:'status'|sorting"
           [ngClass]="getStatusClasses(server)">
           <span class="badge">
             {{ server.status }}
           </span>
-          <strong>{{ server.name | shorten:12}}</strong> | {{ server.instanceType | uppercase }} |
-          {{ server.started | date:'fullDate'|uppercase}}
+          <strong>{{ server.name |reverseString| shorten:12}}</strong> |
+          {{ server.instanceType | uppercase|reverseString }} |
+          {{ server.started | date:'fullDate'|uppercase|reverseString}}
         </li>
       </ul>
     </div>
